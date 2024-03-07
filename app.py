@@ -35,7 +35,7 @@ if category != 'All Categories':
 #visualisasi dengan bar chart
 st.header(':video_camera: Channel')
 bar_data = outputs['channel_name'].value_counts().nlargest(10).sort_values()
-fig = px.bar(bar_data, color=bar_data, orientation= 'h', title = f"Channel Terpopuler dari kategori {category}")
+fig = px.bar(bar_data, color=bar_data, orientation= 'h', title=f'Channel terpopuler dari kategori {category}')
 st.plotly_chart(fig)
  
 #visualisasi dengan scatter plot
@@ -44,10 +44,11 @@ col1, col2 = st.columns(2)
 metrics_choice = ['like','dislike','comment']
 choice_1 = col1.selectbox('Horizontal', options=metrics_choice)
 choice_2 = col2.selectbox('Vertikal', options=metrics_choice)
-fig = px.scatter(outputs, x=choice_1,
+fig = px.scatter(outputs, 
+                 x=choice_1,
                  y=choice_2,
                  size='view',
                  hover_name='channel_name',
                  hover_data=['title'],
-                 title=f"Engagement of {choice_1.title()} and {choice_2.title()}")
+                 title=f'Engagement of {choice_1.title()} and {choice_2.title()}')
 st.plotly_chart(fig)
